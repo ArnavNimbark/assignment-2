@@ -1,0 +1,69 @@
+def main():
+    # --- Initial Setup ---
+    balance = 10000.0  # Initial balance as per requirements
+    minimum_balance = 500.0
+
+    print("Welcome to the ATM Simulator")
+
+    while True:
+        # --- Display Menu ---
+        print("\nATM SIMULATOR")
+        print("1. Check Balance")
+        print("2. Deposit Money")
+        print("3. Withdraw Money")
+        print("4. Exit")
+        
+        choice = input("Enter choice: ")
+
+        # --- Option 1: Check Balance ---
+        if choice == '1':
+            print(f"Current Balance: ₹{balance:.2f}")
+
+        # --- Option 2: Deposit Money ---
+        elif choice == '2':
+            amount = float(input("Enter amount to deposit: "))
+            if amount > 0:
+                balance += amount
+                print("Deposit successful!")
+                print(f"New balance: ₹{balance:.2f}")
+            else:
+                print("Invalid amount. Please enter a positive value.")
+
+        # --- Option 3: Withdraw Money ---
+        elif choice == '3':
+            amount = float(input("Enter amount to withdraw: "))
+            
+            # check 1: Is the amount positive?
+            if amount <= 0:
+                print("Invalid amount. Please enter a positive value.")
+                continue
+
+            # check 2: Do they have enough money AND does it leave ₹500 behind?
+            # The rule says: "Minimum balance of ₹500 must remain at all times"
+            if (balance - amount) >= minimum_balance:
+                balance -= amount
+                print("Withdrawal successful!")
+                print(f"New balance: ₹{balance:.2f}")
+            else:
+                print("Transaction Failed!")
+                if balance < minimum_balance:
+                     # This theoretically shouldn't happen if logic works, but good for safety
+                    print(f"Your balance is already below the minimum limit of ₹{minimum_balance}.")
+                elif amount > balance:
+                    print("Insufficient funds.")
+                else:
+                    # This catches the case where they have the money, but withdrawing it violates the 500 rule
+                    # e.g. Balance is 10,000, they try to withdraw 9,800. Result 200 (Violates rule).
+                    print(f"Cannot withdraw. You must maintain a minimum balance of ₹{minimum_balance}.")
+
+        # --- Option 4: Exit ---
+        elif choice == '4':
+            print("Thank you for using our ATM. Goodbye!")
+            break
+
+        # --- Invalid Input ---
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()

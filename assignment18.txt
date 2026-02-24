@@ -1,0 +1,104 @@
+import string
+
+# --- 1. Count Words ---
+def count_words(text):
+    # split() automatically splits by whitespace
+    words = text.split()
+    return len(words)
+
+# --- 2. Count Vowels ---
+def count_vowels(text):
+    vowels = "aeiouAEIOU"
+    count = 0
+    for char in text:
+        if char in vowels:
+            count += 1
+    return count
+
+# --- 3. Count Consonants ---
+def count_consonants(text):
+    vowels = "aeiouAEIOU"
+    count = 0
+    for char in text:
+        # Check if it's a letter and NOT a vowel
+        if char.isalpha() and char not in vowels:
+            count += 1
+    return count
+
+# --- 4. Reverse Text ---
+def reverse_text(text):
+    return text[::-1]
+
+# --- 5. Palindrome Check ---
+def is_palindrome(text):
+    # Clean the text: remove spaces and convert to lowercase for accurate check
+    # e.g., "Race car" -> "racecar"
+    clean_text = text.replace(" ", "").lower()
+    return clean_text == clean_text[::-1]
+
+# --- 6. Remove Vowels ---
+def remove_vowels(text):
+    vowels = "aeiouAEIOU"
+    result = ""
+    for char in text:
+        if char not in vowels:
+            result += char
+    return result
+
+# --- 7. Word Frequency ---
+def word_frequency(text):
+    # Remove punctuation to ensure "Hello" and "Hello!" are counted as the same word
+    clean_text = text.translate(str.maketrans('', '', string.punctuation))
+    words = clean_text.lower().split()
+    
+    frequency = {}
+    for word in words:
+        if word in frequency:
+            frequency[word] += 1
+        else:
+            frequency[word] = 1
+    return frequency
+
+# --- 8. Longest Word ---
+def longest_word(text):
+    # Remove punctuation first
+    clean_text = text.translate(str.maketrans('', '', string.punctuation))
+    words = clean_text.split()
+    
+    if not words:
+        return ""
+        
+    # Find the word with the maximum length
+    longest = max(words, key=len)
+    return longest
+
+# --- 9. Master Analysis Function ---
+def analyze_text(text):
+    print("\n=== TEXT ANALYSIS ===")
+    print(f"Words: {count_words(text)}")
+    print(f"Vowels: {count_vowels(text)}")
+    print(f"Consonants: {count_consonants(text)}")
+    print(f"Reversed: {reverse_text(text)}")
+    
+    # Format Palindrome Result
+    if is_palindrome(text):
+        print("Palindrome: Yes")
+    else:
+        print("Palindrome: No")
+        
+    print(f"Without vowels: {remove_vowels(text)}")
+    
+    # Format Longest Word Result
+    longest = longest_word(text)
+    print(f"Longest word: {longest} ({len(longest)} letters)")
+    
+    # Format Frequency Result
+    freq_dict = word_frequency(text)
+    # Create a nice string representation like "hello: 2, world: 1"
+    freq_str = ", ".join([f"{k}: {v}" for k, v in freq_dict.items()])
+    print(f"Word Frequency: {freq_str}")
+
+# --- Main Execution Block ---
+if __name__ == "__main__":
+    user_input = input("Enter text: ")
+    analyze_text(user_input)

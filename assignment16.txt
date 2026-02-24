@@ -1,0 +1,19 @@
+# --- 1. Get Input ---
+# input() treats everything as a string, which is perfect for this task.
+raw_input = input("Enter word/number: ")
+
+# --- 2. Display Original ---
+print(f"Original: {raw_input}")
+
+# --- 3. Create Reversed Version ---
+# String slicing [::-1] creates a copy of the string reading backwards.
+reversed_display = raw_input[::-1]
+print(f"Reversed: {reversed_display}")
+
+# --- 4. Perform Palindrome Check ---
+# We convert both to lowercase so that "Racecar" matches "racecaR".
+# This satisfies the "ignore case" requirement.
+if raw_input.lower() == reversed_display.lower():
+    print("Result: PALINDROME")
+else:
+    print("Result: NOT A PALINDROME")

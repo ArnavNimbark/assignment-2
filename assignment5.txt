@@ -1,0 +1,37 @@
+# --- Inputs ---
+# Using float() for money amounts to handle decimals
+# Using int() for number of people
+total_bill = float(input("Enter total bill: "))
+num_people = int(input("Number of people: "))
+tax_percentage = float(input("Tax percentage: "))
+tip_percentage = float(input("Tip percentage: "))
+
+# --- Calculations ---
+# 1. Calculate Tax Amount
+tax_amount = total_bill * (tax_percentage / 100)
+
+# 2. Calculate Bill After Tax
+bill_after_tax = total_bill + tax_amount
+
+# 3. Calculate Tip Amount
+# Based on your sample, the Tip (165) is 15% of the After-Tax amount (1100),
+# not the original subtotal.
+tip_amount = bill_after_tax * (tip_percentage / 100)
+
+# 4. Calculate Final Total
+final_total = bill_after_tax + tip_amount
+
+# 5. Calculate Per Person Share
+amount_per_person = final_total / num_people
+
+# --- Display Output ---
+print("\n=== BILL BREAKDOWN ===")
+
+# Using f-strings with {:.2f} to force exactly 2 decimal places 
+# and adding the currency symbol ₹
+print(f"Subtotal:   ₹{total_bill:.2f}")
+print(f"Tax ({int(tax_percentage)}%):   ₹{tax_amount:.2f}")
+print(f"After tax:  ₹{bill_after_tax:.2f}")
+print(f"Tip ({int(tip_percentage)}%):   ₹{tip_amount:.2f}")
+print(f"Total:      ₹{final_total:.2f}")
+print(f"Per person: ₹{amount_per_person:.2f}")

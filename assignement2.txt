@@ -1,0 +1,30 @@
+# Ask user for two numbers
+# Using float() allows the calculator to handle both whole numbers and decimals
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+
+print("\nResults:")
+
+# The ':g' format specifier removes trailing zeros (e.g., turns 10.0 into 10)
+print(f"{num1:g} + {num2:g} = {num1 + num2:g}")
+
+# Subtraction
+print(f"{num1:g} - {num2:g} = {num1 - num2:g}")
+
+# Multiplication
+print(f"{num1:g} * {num2:g} = {num1 * num2:g}")
+
+# Division: Using round() to limit the output to 2 decimal places like in the sample
+if num2 != 0:
+    print(f"{num1:g} / {num2:g} = {round(num1 / num2, 2)}")
+else:
+    print(f"{num1:g} / {num2:g} = Undefined (Cannot divide by zero)")
+
+# Modulus (Remainder)
+if num2 != 0:
+    print(f"{num1:g} % {num2:g} = {num1 % num2:g}")
+else:
+    print(f"{num1:g} % {num2:g} = Undefined")
+
+# Exponentiation (Power)
+print(f"{num1:g} ^ {num2:g} = {num1 ** num2:g}")

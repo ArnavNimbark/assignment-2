@@ -1,0 +1,42 @@
+# Ask the user for a sentence
+sentence = input("Enter a sentence: ")
+
+# 1. Original sentence
+print(f"\nOriginal: {sentence}")
+
+# 2. Total characters (with spaces)
+# len() counts every character, including spaces
+print(f"Characters (with spaces): {len(sentence)}")
+
+# 3. Total characters (without spaces)
+# We replace all spaces with nothing (''), then count the length
+print(f"Characters (without spaces): {len(sentence.replace(' ', ''))}")
+
+# Split the sentence into a list of words to use for word counting and indexing
+words = sentence.split()
+
+# 4. Total words
+print(f"Words: {len(words)}")
+
+# 5. UPPERCASE
+print(f"UPPERCASE: {sentence.upper()}")
+
+# 6. lowercase
+print(f"lowercase: {sentence.lower()}")
+
+# 7. Title Case
+print(f"Title Case: {sentence.title()}")
+
+# 8. First word & 9. Last word
+# We use indexing on the 'words' list we created earlier
+# If the user just hits enter (empty string), this prevents an IndexError
+if words: 
+    print(f"First word: {words[0]}")
+    print(f"Last word: {words[-1]}")
+else:
+    print("First word: None")
+    print("Last word: None")
+
+# 10. Reversed sentence
+# String slicing [::-1] steps backwards through the string
+print(f"Reversed: {sentence[::-1]}")

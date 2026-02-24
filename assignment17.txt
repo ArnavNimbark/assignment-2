@@ -1,0 +1,83 @@
+# --- Define the Math Functions ---
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    if b == 0:
+        return "Error: Cannot divide by zero"
+    return a / b
+
+def modulus(a, b):
+    return a % b
+
+def power(a, b):
+    return a ** b
+
+# --- Define the Main Menu Function ---
+def calculator():
+    print("=== FUNCTION CALCULATOR ===")
+    
+    while True:
+        # Display Menu
+        print("\nSelect Operation:")
+        print("1. Add")
+        print("2. Subtract")
+        print("3. Multiply")
+        print("4. Divide")
+        print("5. Modulus")
+        print("6. Power")
+        print("7. Exit")
+        
+        choice = input("Enter choice (1-7): ")
+
+        # Check for Exit condition first
+        if choice == '7':
+            print("Exiting calculator. Goodbye!")
+            break
+
+        # Check for valid math choices
+        if choice in ('1', '2', '3', '4', '5', '6'):
+            try:
+                # Get user inputs
+                num1 = float(input("Enter first number: "))
+                num2 = float(input("Enter second number: "))
+            except ValueError:
+                print("Invalid input! Please enter numbers only.")
+                continue
+
+            # Call the appropriate function based on user choice
+            if choice == '1':
+                print(f"Result: {num1} + {num2} = {add(num1, num2)}")
+            
+            elif choice == '2':
+                print(f"Result: {num1} - {num2} = {subtract(num1, num2)}")
+            
+            elif choice == '3':
+                print(f"Result: {num1} * {num2} = {multiply(num1, num2)}")
+            
+            elif choice == '4':
+                # We capture the return value to check if it's an error message or a number
+                result = divide(num1, num2)
+                if result == "Error: Cannot divide by zero":
+                    print(result)
+                else:
+                    print(f"Result: {num1} / {num2} = {result}")
+            
+            elif choice == '5':
+                print(f"Result: {num1} % {num2} = {modulus(num1, num2)}")
+            
+            elif choice == '6':
+                print(f"Result: {num1} ^ {num2} = {power(num1, num2)}")
+        
+        else:
+            print("Invalid choice! Please select 1-7.")
+
+# --- Run the Main Function ---
+if __name__ == "__main__":
+    calculator()

@@ -1,0 +1,27 @@
+# --- 1. Get Input ---
+num = int(input("Enter a number: "))
+
+# --- 2. Handle Negative Numbers (Error Case) ---
+if num < 0:
+    print("Factorial does not exist for negative numbers.")
+
+# --- 3. Handle Zero (Special Case) ---
+elif num == 0:
+    print("0! = 1")
+
+# --- 4. Handle Positive Numbers ---
+else:
+    factorial = 1
+    steps = [] # A list to store the numbers for the display string
+
+    # Loop from 'num' down to 1
+    for i in range(num, 0, -1):
+        factorial *= i          # Multiply current number to total
+        steps.append(str(i))    # Add the number to our list for display
+
+    # --- 5. Format Output ---
+    # We use " x ".join() to combine the list ["5", "4", "3"...] 
+    # into a string "5 x 4 x 3..." cleanly without a trailing "x".
+    steps_string = " x ".join(steps)
+    
+    print(f"{num}! = {steps_string} = {factorial}")

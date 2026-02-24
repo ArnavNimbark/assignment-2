@@ -1,0 +1,18 @@
+# Defining the  variables for each field
+name = "Arnav Nimbark"
+age = "20 years"
+course = "Python Programming"
+college = "CMRIT"
+email = "arni22cs@cmrit.ac.in"
+# Display the formatted card using ASCII borders
+print("╔══════════════════════════════════════════╗")
+print("║             STUDENT BIO CARD                     ║")
+print("╠══════════════════════════════════════════╣")
+# The '<25' inside the curly braces left-aligns the text within 25 spaces 
+# so the right border of the box stays perfectly straight.
+print(f"║ Name    : {name:<25}              ║")
+print(f"║ Age     : {age:<25}              ║")
+print(f"║ Course  : {course:<25}              ║")
+print(f"║ College : {college:<25}              ║")
+print(f"║ Email   : {email:<25}              ║")
+print("╚══════════════════════════════════════════╝")

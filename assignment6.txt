@@ -1,0 +1,46 @@
+# --- 1. Ask user for marks in 5 subjects ---
+# We use a list to store the marks so we can easily check them later
+print("Enter marks for 5 subjects (out of 100):")
+subjects = []
+for i in range(1, 6):
+    mark = float(input(f"Subject {i}: "))
+    subjects.append(mark)
+
+# --- 2. Calculate Total and Percentage ---
+total_marks = sum(subjects)
+percentage = (total_marks / 500) * 100
+
+# --- 3. Determine Grade based on Percentage ---
+# Using the scale provided in the image
+if percentage >= 90:
+    grade = "A+ (Outstanding)"
+elif percentage >= 80:
+    grade = "A (Excellent)"
+elif percentage >= 70:
+    grade = "B (Good)"
+elif percentage >= 60:
+    grade = "C (Average)"
+elif percentage >= 50:
+    grade = "D (Pass)"
+else:
+    grade = "F (Fail)"
+
+# --- 4. Determine Result (Pass/Fail) ---
+# The rule states: Pass only if ALL subjects are >= 40
+result = "Pass"
+for mark in subjects:
+    if mark < 40:
+        result = "Fail"
+        break  # If we find one failure, we can stop checking
+
+# --- 5. Display Output ---
+print("\n=== STUDENT REPORT CARD ===")
+# Display individual marks
+for i, mark in enumerate(subjects, 1):
+    print(f"Subject {i}: {mark}")
+
+print("---------------------------")
+print(f"Total Marks: {total_marks} / 500")
+print(f"Percentage:  {percentage:.2f}%")
+print(f"Grade:       {grade}")
+print(f"Result:      {result}")

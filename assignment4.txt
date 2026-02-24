@@ -1,0 +1,49 @@
+import datetime
+
+# --- PART 1: Standard Assignment (Year based) ---
+print("--- Standard Age Calculator ---")
+current_year = datetime.datetime.now().year
+birth_year = int(input("Enter your birth year: "))
+
+# 1. Current age
+age = current_year - birth_year
+
+# 2. Age in months (12 months/year)
+age_months = age * 12
+
+# 3. Age in days (approx 365 days/year)
+age_days = age * 365
+
+# 4. Age in hours (24 hours/day)
+age_hours = age_days * 24
+
+# 5. Age in minutes (60 minutes/hour)
+age_minutes = age_hours * 60
+
+# 6. Years until age 100
+years_to_100 = 100 - age
+
+print(f"\nCurrent Age: {age}")
+print(f"Age in months: {age_months}")
+print(f"Age in days: {age_days}")
+print(f"Age in hours: {age_hours}")
+print(f"Age in minutes: {age_minutes}")
+print(f"Years until you turn 100: {years_to_100}")
+
+
+# --- PART 2: Bonus (+2 Points) - Exact Date Calculation ---
+print("\n--- Bonus: Exact Age Calculator ---")
+print("Please enter your full birth date.")
+day = int(input("Day (DD): "))
+month = int(input("Month (MM): "))
+year = int(input("Year (YYYY): "))
+
+# Create date objects for birth date and today
+birth_date = datetime.date(year, month, day)
+today = datetime.date.today()
+
+# Calculate the difference
+delta = today - birth_date
+
+print(f"\nYou have been alive for exactly {delta.days} days.")
+print(f"That is approximately {round(delta.days / 365.25, 2)} years.")

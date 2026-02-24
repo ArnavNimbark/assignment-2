@@ -1,0 +1,57 @@
+import math
+
+# --- Helper Function ---
+# This function decides if a number 'n' is prime or not.
+def is_prime(n):
+    # 1. Handle Negatives, 0, and 1 (Not Prime)
+    if n <= 1:
+        return False
+    
+    # 2. Handle 2 (The only even Prime)
+    if n == 2:
+        return True
+    
+    # 3. Handle other even numbers (Not Prime)
+    if n % 2 == 0:
+        return False
+    
+    # 4. Check for factors 
+    # We only need to check up to the square root of n.
+    # We step by 2 (3, 5, 7...) because we already checked for even numbers.
+    limit = int(math.sqrt(n)) + 1
+    for i in range(3, limit, 2):
+        if n % i == 0:
+            return False
+            
+    return True
+
+# ==========================================
+# PART 1: Check a Single Number
+# ==========================================
+print("--- Check Single Number ---")
+num = int(input("Enter a number: "))
+
+if is_prime(num):
+    print(f"{num} is a PRIME number")
+else:
+    print(f"{num} is NOT a prime number")
+
+# ==========================================
+# PART 2: Find Primes in a Range
+# ==========================================
+print("\n--- Find Primes in Range ---")
+start_range = int(input("Enter start range: "))
+end_range = int(input("Enter end range: "))
+
+found_primes = []
+
+# Loop through the range (inclusive of the end number)
+for number in range(start_range, end_range + 1):
+    if is_prime(number):
+        found_primes.append(str(number)) # Add to list as string
+
+# Print the result nicely formatted with commas
+if found_primes:
+    print(f"Prime numbers: {', '.join(found_primes)}")
+else:
+    print("No prime numbers found in this range.")

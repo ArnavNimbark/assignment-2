@@ -1,0 +1,30 @@
+# --- 1. Get the count of numbers ---
+# We use int() because you can't have "half" a number of inputs
+count = int(input("How many numbers? "))
+
+# Create an empty list to store the inputs
+numbers = []
+
+# --- 2. Loop to get inputs ---
+# Loop from 1 up to 'count'
+if count > 0:
+    for i in range(1, count + 1):
+        num = float(input(f"Enter number {i}: "))
+        numbers.append(num)
+
+    # --- 3. Perform Calculations ---
+    # Python has built-in functions that make this very easy:
+    total_sum = sum(numbers)             # Adds everything in the list
+    maximum = max(numbers)               # Finds the highest number
+    minimum = min(numbers)               # Finds the lowest number
+    average = total_sum / count          # Standard average formula
+
+    # --- 4. Display Results ---
+    # using :g to remove unnecessary decimal places (e.g. 100.0 becomes 100)
+    print(f"\nSum:     {total_sum:g}")
+    print(f"Average: {average:g}")
+    print(f"Maximum: {maximum:g}")
+    print(f"Minimum: {minimum:g}")
+
+else:
+    print("You entered 0 numbers, so there is nothing to calculate!")
