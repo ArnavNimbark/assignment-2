@@ -46,3 +46,7 @@ Project Structure
 * cohere_example.py: Queries Cohere models.
 * requirements.txt: List of Python dependencies].
 * screenshots/: Folder containing output verification for each API
+
+Was unable to complete hugging face and openAI 
+Hugging face: No working API
+OpenAi: requires payment
